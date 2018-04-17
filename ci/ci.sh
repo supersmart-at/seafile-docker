@@ -13,11 +13,19 @@ set -e -x
 )
 
 mkdir -p /opt/seafile-data
-docker run -d --name seafile -v /opt/seafile-data:/shared -p 80:80 -p 443:443 seafileltd/seafile:$version
+docker run -d --name seafile -e SEAFILE_SERVER_HOSTNAME=127.0.0.1 -v /opt/seafile-data:/shared -p 80:80 -p 443:443 seafileltd/seafile:$version
+cat > doc.md <<EOF
+# Doc
+
+Hello world.
+EOF
+python ci/upload.py doc.md
+echo $(pwd)
 docker stop seafile
 docker start seafile
 docker restart seafile
 
+rm -rf doc.md
 if [[ $TRAVIS_TAG != "" ]]; then
     ci/publish-image.sh
 else

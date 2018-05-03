@@ -16,9 +16,9 @@ docker login -u="$DOCKER_PRO_REGISTRY_USER" -p="$DOCKER_PRO_REGISTRY_PASSWORD" d
     make host=docker-internal.seadrive.org push-pro-base
 )
 
-docker login -u="$LOCAL_DOCKER_PRO_REGISTRY_USER" -p="$LOCAL_DOCKER_PRO_REGISTRY_PASSWORD" docker.seafile.top
+docker login -u="$LOCAL_DOCKER_PRO_REGISTRY_USER" -p="$LOCAL_DOCKER_PRO_REGISTRY_PASSWORD" docker-internal.seafile.top
 
 (
     cd image
-    make host=docker.seafile.top push-pro-base
+    make host=docker-internal.seafile.top push-pro-base
 )

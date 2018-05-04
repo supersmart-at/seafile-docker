@@ -40,12 +40,12 @@ media_dirs=(
     avatars
     custom
 )
-for d in ${dirs[*]}; do
-    source_avatars_dir=${current_version_dir}/seahub/media/avatars
-    if [[ ! -e ${seahub_data_dir}/$d ]]; then
-        mv $source_avatars_dir ${seahub_data_dir}/$d
+for d in ${media_dirs[*]}; do
+    source_media_dir=${current_version_dir}/seahub/media/$d
+    if [ -e ${source_media_dir} ] && [ ! -e ${seahub_data_dir}/$d ]; then
+        mv $source_media_dir ${seahub_data_dir}/$d
     fi
-    rm -rf $source_avatars_dir && ln -sf ${seahub_data_dir}/$d $source_avatars_dir
+    rm -rf $source_media_dir && ln -sf ${seahub_data_dir}/$d $source_media_dir
 done
 
 rm -rf /var/lib/mysql

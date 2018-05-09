@@ -1,7 +1,7 @@
 #!/bin/bash
 
 ######################################
-# Publish the seafile pro-server image (e.g. seafileltd/pro-seafile:6.2.3) to docker
+# Publish the seafile pro-server image (e.g. seafileltd/seafile-pro:6.2.3) to docker
 # registry. This script should only be called during a travis build trigger by a tag.
 ######################################
 
